@@ -10,11 +10,11 @@ This is an attempt to use Vagrant and Dockers to provide an easy to setup develo
  3. Install [Vagrant plugins](https://docs.vagrantup.com/v2/plugins/usage.html)
 
    ```
-	% vagrant plugin install vagrant-proxyconf
 	% vagrant plugin install vagrant-reload
    ```
  4. Download and unzip the [Openswitch Vagrant files](https://github.com/shadansari/openswitch-vagrant/archive/master.zip) into a workspace folder.
- 5. Run vagrant up.
+ 5. If you are behind a proxy, set the proxy host:port info in the host/Vagrantfile. 
+ 6. Run vagrant up.
 
    ```
 	% cd openswitch-vagrant-master
@@ -46,9 +46,20 @@ Build Openswitch
 Run Openswitch
 -------------------
 
+Running behind a proxy
+----------------------
+If you are behind a proxy, install the vagrant-proxyconf:
+```
+	% vagrant plugin install vagrant-proxyconf
+```
+and set the proxy host and port in the host/Vagrantfile:
+```
+        config.proxy.http = "http://proxy.example.com:8080"   
+        config.proxy.https = "http://proxy.example.com:8080" 
+```
+
 Caveats
 -------
-
  1. Only tested on Windows 7.
  2. Bails out on Ubuntu (needs to fix this)
  3. Tested with Vagrant 1.7.4 and Dockers 5.0. Latest versions of both are recommended as Docker support is not present in older versions of vagrant.
