@@ -9,6 +9,16 @@ $provisioning_script = <<SCRIPT
 
 set -ex
 
+if [ -n $http_proxy ]
+then
+  export proxyhost=`echo $http_proxy | awk -F: '{ print substr($2,3); }'`
+  export proxyport=`echo $http_proxy | awk -F: '{ print $3 }'`
+  sudo -E bash -c 'cat > /home/vagrant/.ssh/config <<EOF
+Host *.openswitch.net
+  ProxyCommand socat - PROXY:$proxyhost:%h:%p,proxyport=$proxyport
+EOF'
+fi
+
 sudo apt-get update
 sudo apt-get -y install gawk wget git diffstat build-essential chrpath screen device-tree-compiler socat python-setuptools texinfo
 
@@ -36,9 +46,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :reload
 
   if Vagrant.has_plugin?("vagrant-proxyconf")
-     config.proxy.http = "http://web-proxy.rose.hp.com:8080"  
-     config.proxy.https = "http://web-proxy.rose.hp.com:8080"
-     #config.proxy.no_proxy = "localhost,127.0.0.1,/var/run/docker.sock"
+     config.proxy.http = ""  # "http://proxy.example.com:8080"  
+     config.proxy.https = "" # "http://proxy.example.com:8080"
      config.proxy.no_proxy = "localhost,127.0.0.1"
   end
 
