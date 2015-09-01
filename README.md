@@ -23,6 +23,18 @@ This is an attempt to use Vagrant and Dockers to provide an easy to setup develo
 
 The first "vagrant up" can take a while since the entire Openswitch repository is fetched and built.
 
+Running behind a proxy
+----------------------
+If you are behind a proxy, install the vagrant-proxyconf:
+```
+	% vagrant plugin install vagrant-proxyconf
+```
+and set the proxy host and port in the host/Vagrantfile:
+```
+        config.proxy.http = "http://proxy.example.com:8080"   
+        config.proxy.https = "http://proxy.example.com:8080" 
+```
+
 What you get
 -------
 If everything goes well, your VM should now have the Openswitch development environment in **~/ops-build**. (The username/password for the VM is the default vagrant/vagrant). The VM has an instance of Openswitch running inside a docker container in the VM.  
@@ -45,18 +57,6 @@ Build Openswitch
 
 Run Openswitch
 -------------------
-
-Running behind a proxy
-----------------------
-If you are behind a proxy, install the vagrant-proxyconf:
-```
-	% vagrant plugin install vagrant-proxyconf
-```
-and set the proxy host and port in the host/Vagrantfile:
-```
-        config.proxy.http = "http://proxy.example.com:8080"   
-        config.proxy.https = "http://proxy.example.com:8080" 
-```
 
 Caveats
 -------
