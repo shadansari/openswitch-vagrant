@@ -17,7 +17,7 @@ This is an attempt to use Vagrant and Dockers to provide an easy to setup develo
 ```
 	% vagrant plugin install vagrant-proxyconf
 ```
-    and set the proxy host and port in the host/Vagrantfile:
+and set the proxy host and port in the host/Vagrantfile:
 ```
         config.proxy.http = "http://proxy.example.com:8080"   
         config.proxy.https = "http://proxy.example.com:8080" 
