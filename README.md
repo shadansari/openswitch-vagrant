@@ -12,15 +12,15 @@ This is an attempt to use Vagrant and Dockers to provide an easy to setup develo
    ```
 	% vagrant plugin install vagrant-reload
    ```
- 4. If you are behind a proxy, install the vagrant-proxyconf:
-```
+ 4. If you are behind a proxy, install the vagrant-proxyconf plugin:
+   ```
 	% vagrant plugin install vagrant-proxyconf
-```
-and set the proxy host and port in the host/Vagrantfile:
-```
+   ```
+and set the proxy hosti:port info in host/Vagrantfile:
+   ```
         config.proxy.http = "http://proxy.example.com:8080"   
         config.proxy.https = "http://proxy.example.com:8080" 
-```
+   ```
  5. Download and unzip the [Openswitch Vagrant files](https://github.com/shadansari/openswitch-vagrant/archive/master.zip) into a workspace folder.
  6. Run vagrant up.
 
