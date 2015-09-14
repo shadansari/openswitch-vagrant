@@ -14,7 +14,7 @@ This is an attempt to use Vagrant and Dockers to provide an easy to setup develo
    ```
  4. If you are behind a proxy:
 
-       - Make sure that the http_proxy and https_proxy environment variables are set correctly.
+       - Make sure that the http_proxy and https_proxy environment variables are set correctly and are visible in shell/terminal.
 
        - Install the vagrant-proxyconf plugin:
 
