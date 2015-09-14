@@ -25,7 +25,7 @@ This is an attempt to use Vagrant and Dockers to provide an easy to setup develo
 
    ```
 
-        - Set the proxy host:port info in host/Vagrantfile:
+       - Set the proxy host:port info in host/Vagrantfile:
 
    ```
         config.proxy.http = "http://proxy.example.com:8080"   
