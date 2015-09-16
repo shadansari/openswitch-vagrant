@@ -4,15 +4,18 @@ Openswitch Development Environment
 This is an attempt to use Vagrant and Dockers to provide an easy to setup development environment for the [Openswitch](openswitch.net) project.
  
  Skip steps 1-4 if Virtualbox and Vagrant (and the required plugins) are already installed.
- 
+
+[Note: All cmds below are to be executed in a shell on the host machine (e.g. laptop)] 
+
  1. Download and install Virtualbox from [virtualbox.org](https://www.virtualbox.org/)
  2. Download and install Vagrant from [vagrantup.com](vagrantup.com)
- 3. Install [Vagrant plugins](https://docs.vagrantup.com/v2/plugins/usage.html)
+ 3. Download and unzip the [Openswitch Vagrant files](https://github.com/shadansari/openswitch-vagrant/archive/master.zip) into a workspace folder.
+ 4. Install [Vagrant plugins](https://docs.vagrantup.com/v2/plugins/usage.html)
 
    ```
 	% vagrant plugin install vagrant-reload
    ```
- 4. If you are behind a proxy:
+ 5. If you are behind a proxy:
 
        - Make sure that the http_proxy and https_proxy environment variables are set correctly and are visible in shell/terminal.
 
@@ -33,7 +36,6 @@ This is an attempt to use Vagrant and Dockers to provide an easy to setup develo
 
    ```
 
- 5. Download and unzip the [Openswitch Vagrant files](https://github.com/shadansari/openswitch-vagrant/archive/master.zip) into a workspace folder.
  6. Run vagrant up.
 
    ```
