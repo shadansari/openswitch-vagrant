@@ -1,0 +1,10 @@
+# OS-specifc
+.DS_Store
+
+# Editor swap files
+.*.sw?
+*~
+
+# Vagrant
+/.vagrant
+/host/.vagrant
