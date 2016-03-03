@@ -20,7 +20,7 @@ EOF'
 fi
 
 sudo apt-get update
-sudo apt-get -y install gawk wget git diffstat build-essential chrpath screen device-tree-compiler socat python-setuptools texinfo
+sudo apt-get -y install gawk wget git diffstat libfontconfig1 build-essential chrpath screen device-tree-compiler socat python-setuptools texinfo
 
 git clone http://github.com/mininet/mininet ~/mininet
 cd ~/mininet; sudo python setup.py install
