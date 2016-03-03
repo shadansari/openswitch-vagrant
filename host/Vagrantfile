@@ -5,36 +5,6 @@
 Vagrant.require_version ">= 1.6.0"
 VAGRANTFILE_API_VERSION = "2"
 
-$provisioning_script = <<SCRIPT
-
-set -ex
-
-if [ -n $http_proxy ]
-then
-  export proxyhost=`echo $http_proxy | awk -F: '{ print substr($2,3); }'`
-  export proxyport=`echo $http_proxy | awk -F: '{ print $3 }'`
-  sudo -E bash -c 'cat > /home/vagrant/.ssh/config <<EOF
-Host *.openswitch.net
-  ProxyCommand socat - PROXY:$proxyhost:%h:%p,proxyport=$proxyport
-EOF'
-fi
-
-sudo apt-get update
-sudo apt-get -y install gawk wget git diffstat libfontconfig1 build-essential chrpath screen device-tree-compiler socat python-setuptools texinfo
-
-git clone http://github.com/mininet/mininet ~/mininet
-cd ~/mininet; sudo python setup.py install
-
-cd
-git clone http://git.openswitch.net/openswitch/ops-build ops-build
-cd ops-build
-make configure genericx86-64
-make
-make export_docker_image 
-docker images
-
-SCRIPT
-
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "ops-host"
   config.vm.box_check_update = false
@@ -73,7 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      vb.customize ["modifyvm", :id, "--cpus", cpus]
   end
   config.vm.provision "shell" do |s|
-    s.inline = $provisioning_script
+    s.path = 'vagrant.d/provisioner.sh'
     s.privileged = false
   end
 end
