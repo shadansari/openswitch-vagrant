@@ -62,7 +62,7 @@ Run Openswitch
 
 Caveats
 -------
- 1. Only tested on Windows 7.
+ 1. Tested on Windows 7 and OSX.
  2. Bails out on Ubuntu (needs to fix this)
- 3. Tested with Vagrant 1.7.4 and Dockers 5.0. Latest versions of both are recommended as Docker support is not present in older versions of vagrant.
+ 3. Tested with Vagrant 1.7.4 and Virtualbox 5.0. Latest versions of both are recommended as Docker support is not present in older versions of vagrant.
 
